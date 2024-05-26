@@ -55,6 +55,17 @@ namespace Jellyfin.Plugin.MergeVersions
                     current++;
                     var percent = current / (double)duplicateMovies.Count * 100;
                     progress?.Report((int)percent);
+
+                    _logger.LogInformation($"KMERGE: Found {m.Count()} versions of {m.Key}:");
+
+                    for (var i = 0; i < m.Count(); i++) {
+                        var lib = m.ElementAt(i).Library;
+
+                        _logger.LogInformation(
+                            $"KMERGE: {lib.Id} - {lib.Name} ({lib.Path})"
+                        );
+                    }
+
                     _logger.LogInformation(
                         $"Merging {m.ElementAt(0).Name} ({m.ElementAt(0).ProductionYear})"
                     );
