@@ -58,8 +58,9 @@ namespace Jellyfin.Plugin.MergeVersions
 
                     _logger.LogInformation($"KMERGE: Found {m.Count()} versions of {m.Key}:");
 
-                    for (var i = 0; i < m.Count(); i++) {
-                        var lib = m.ElementAt(i).Library;
+                    foreach (var movie in m) {
+                    // for (var i = 0; i < m.Count(); i++) {
+                        var lib = movie.Library;
 
                         _logger.LogInformation(
                             $"KMERGE: {lib.Id} - {lib.Name} ({lib.Path})"
